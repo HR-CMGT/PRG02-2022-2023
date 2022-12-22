@@ -45,7 +45,7 @@
             <td class="is-vcentered"><?= $album->id; ?></td>
             <td class="is-vcentered"><?= $album->artists_name; ?></td>
             <td class="is-vcentered"><?= $album->name; ?></td>
-            <td class="is-vcentered"><?= implode(', ', $album->genres()); ?></td>
+            <td class="is-vcentered"><?= implode(', ', $album->getGenres()); ?></td>
             <td class="is-vcentered"><?= $album->year; ?></td>
             <td class="is-vcentered"><?= $album->tracks; ?></td>
             <td class="is-vcentered"><a href="<?= BASE_PATH; ?>albums/detail?id=<?= $album->id; ?>">Details</a></td>

@@ -19,7 +19,7 @@
     <img class="image is-128x128" src="<?= BASE_PATH; ?>images/<?= $album->image; ?>" alt="<?= $album->name; ?>"/>
     <section class="content">
         <ul>
-            <li>Genre(s): <?= implode(', ', $album->genres()); ?></li>
+            <li>Genre(s): <?= implode(', ', $album->getGenres()); ?></li>
             <li>Year: <?= $album->year; ?></li>
             <li>Tracks: <?= $album->tracks; ?></li>
         </ul>

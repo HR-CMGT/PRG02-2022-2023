@@ -90,4 +90,4 @@
     </form>
 </section>
 <a class="button mt-4" href="<?= BASE_PATH; ?>albums">&laquo; Go back to the list</a>
-<a class="button mt-4 is-danger" href="<?= BASE_PATH; ?>logout">Logout</a>
+<a class="button mt-4 is-danger" href="<?= BASE_PATH; ?>user/logout">Logout</a>
