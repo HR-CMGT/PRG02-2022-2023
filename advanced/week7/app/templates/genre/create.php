@@ -2,10 +2,10 @@
 /**
  * @var array $errors
  * @var string|boolean $success
- * @var \MusicCollection\Databases\Objects\Artist $artist
+ * @var \MusicCollection\Databases\Objects\Genre $genre
  */
 ?>
-<h1 class="title mt-4">Create artist</h1>
+<h1 class="title mt-4">Create genre</h1>
 <?php if (!empty($errors)): ?>
     <section class="content">
         <ul class="notification is-danger">
@@ -20,7 +20,7 @@
     <p class="notification is-primary"><?= $success; ?></p>
 <?php } ?>
 
-<?php if (isset($artist)): ?>
+<?php if (isset($genre)): ?>
 <section class="columns">
     <form class="column is-6" action="" method="post" enctype="multipart/form-data">
         <div class="field is-horizontal">
@@ -28,7 +28,7 @@
                 <label class="label" for="name">Name</label>
             </div>
             <div class="field-body">
-                <input class="input" id="name" type="text" name="name" value="<?= $artist->name; ?>"/>
+                <input class="input" id="name" type="text" name="name" value="<?= $genre->name; ?>"/>
             </div>
         </div>
         <div class="field is-horizontal">
@@ -40,5 +40,5 @@
     </form>
 </section>
 <?php endif; ?>
-<a class="button mt-4" href="<?= BASE_PATH; ?>artists">&laquo; Go back to the list</a>
+<a class="button mt-4" href="<?= BASE_PATH; ?>genres">&laquo; Go back to the list</a>
 <a class="button mt-4 is-danger" href="<?= BASE_PATH; ?>logout">Logout</a>

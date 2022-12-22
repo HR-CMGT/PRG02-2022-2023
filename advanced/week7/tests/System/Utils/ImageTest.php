@@ -1,7 +1,7 @@
 <?php namespace System\Utils;
 
 use PHPUnit\Framework\TestCase;
-use Utils\Image;
+use MusicCollection\Utils\Image;
 
 /**
  * Class ImageTest

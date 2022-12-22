@@ -1,8 +1,8 @@
 <?php
 /**
- * @var $errors array
- * @var $totalArtists int
- * @var $artists \MusicCollection\Databases\Objects\Artist[]
+ * @var array $errors
+ * @var int $totalArtists
+ * @var \MusicCollection\Databases\Objects\Artist[] $artists
  */
 ?>
 <h1 class="title mt-4">Artists</h1>

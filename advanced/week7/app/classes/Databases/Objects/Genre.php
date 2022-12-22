@@ -24,4 +24,20 @@ class Genre extends BaseObject
     {
         return $this->name;
     }
+
+    /**
+     * @return Album[]
+     */
+    public function albums(): array
+    {
+        $statement = $this->db->prepare(
+            "SELECT al.* FROM `albums` AS al
+                    LEFT JOIN album_genre ag ON al.id = ag.album_id
+                    LEFT JOIN genres g on ag.genre_id = g.id
+                    WHERE `g`.`id` = :id"
+        );
+        $statement->execute([':id' => $this->id]);
+
+        return $statement->fetchAll(\PDO::FETCH_CLASS, 'MusicCollection\Databases\Objects\Album');
+    }
 }

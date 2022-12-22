@@ -3,6 +3,7 @@
 /**
  * Class HomeHandler
  * @package MusicCollection\Handlers
+ * @noinspection PhpUnused
  */
 class HomeHandler extends BaseHandler
 {

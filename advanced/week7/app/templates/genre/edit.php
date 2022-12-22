@@ -2,7 +2,7 @@
 /**
  * @var array $errors
  * @var string|boolean $success
- * @var \MusicCollection\Databases\Objects\Artist $artist
+ * @var \MusicCollection\Databases\Objects\Genre $genre
  */
 ?>
 <?php if (!empty($errors)): ?>
@@ -19,8 +19,8 @@
     <p class="notification is-primary"><?= $success; ?></p>
 <?php endif; ?>
 
-<?php if (isset($artist)): ?>
-    <h1 class="title mt-4">Edit <em><?= $artist->name; ?></em></h1>
+<?php if (isset($genre)): ?>
+    <h1 class="title mt-4">Edit <em><?= $genre->name; ?></em></h1>
     <section class="columns">
         <form class="column is-6" action="" method="post" enctype="multipart/form-data">
             <div class="field is-horizontal">
@@ -28,7 +28,7 @@
                     <label class="label" for="name">Name</label>
                 </div>
                 <div class="field-body">
-                    <input class="input" id="name" type="text" name="name" value="<?= $artist->name; ?>"/>
+                    <input class="input" id="name" type="text" name="name" value="<?= $genre->name; ?>"/>
                 </div>
             </div>
             <div class="field is-horizontal">
@@ -40,4 +40,4 @@
         </form>
     </section>
 <?php endif; ?>
-<a class="button mt-4" href="<?= BASE_PATH; ?>artists">&laquo; Go back to the list</a>
+<a class="button mt-4" href="<?= BASE_PATH; ?>genres">&laquo; Go back to the list</a>

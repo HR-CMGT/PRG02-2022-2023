@@ -9,7 +9,7 @@ class Session
     /**
      * Initialize object
      */
-    public function __construct(private readonly array $data)
+    public function __construct(private array $data)
     {
     }
 
@@ -43,6 +43,7 @@ class Session
      */
     public function set(string $key, mixed $value): void
     {
+        $this->data[$key] = $value;
         $_SESSION[$key] = $value;
     }
 
@@ -53,6 +54,7 @@ class Session
      */
     public function delete(string $key): void
     {
+        unset($this->data[$key]);
         unset($_SESSION[$key]);
     }
 
@@ -61,6 +63,7 @@ class Session
      */
     public function destroy(): void
     {
+        $this->data = [];
         session_destroy();
     }
 }

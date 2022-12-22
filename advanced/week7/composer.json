@@ -8,6 +8,9 @@
             "email": "moora@hr.nl"
         }
     ],
+    "scripts": {
+        "test": "export XDEBUG_MODE=coverage && phpunit --testdox"
+    },
     "require": {
         "phpunit/phpunit": "^9.5"
     },

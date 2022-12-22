@@ -1,7 +1,7 @@
 <?php namespace System\Utils;
 
 use PHPUnit\Framework\TestCase;
-use Utils\Session;
+use MusicCollection\Utils\Session;
 
 /**
  * Class SessionTest

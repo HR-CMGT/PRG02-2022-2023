@@ -1,28 +1,28 @@
 <?php namespace MusicCollection\Handlers;
 
-use MusicCollection\Databases\Objects\Artist;
+use MusicCollection\Databases\Objects\Genre;
 
 /**
- * Class ArtistHandler
+ * Class GenreHandler
  * @package MusicCollection\Handlers
  * @noinspection PhpUnused
  */
-class ArtistHandler extends BaseHandler
+class GenreHandler extends BaseHandler
 {
-    use FillAndValidate\Artist;
+    use FillAndValidate\Genre;
 
-    private Artist $artist;
+    private Genre $genre;
 
     protected function index(): void
     {
-        //Get all artists
-        $artists = Artist::getAll();
+        //Get all genres
+        $genres = Genre::getAll();
 
         //Return formatted data
         $this->renderTemplate([
-            'pageTitle' => 'Artists',
-            'artists' => $artists,
-            'totalArtists' => count($artists)
+            'pageTitle' => 'Genres',
+            'genres' => $genres,
+            'totalGenres' => count($genres)
         ]);
     }
 
@@ -30,33 +30,33 @@ class ArtistHandler extends BaseHandler
     {
         //If not logged in, redirect to login
         if (!$this->session->keyExists('user')) {
-            header('Location: ' . BASE_PATH . 'user/login?location=artists/create');
+            header('Location: ' . BASE_PATH . 'user/login?location=genres/create');
             exit;
         }
 
-        //Set default empty artist & execute POST logic
-        $this->artist = new Artist();
+        //Set default empty genre & execute POST logic
+        $this->genre = new Genre();
         $this->executePostHandler();
 
         //Database magic when no errors are found
         if (isset($this->formData) && empty($this->errors)) {
-            //Set user id in Artist
-            $this->artist->user_id = $this->session->get('user')->id;
+            //Set user id in Genre
+            $this->genre->user_id = $this->session->get('user')->id;
 
             //Save the record to the db
-            if ($this->artist->save()) {
-                $success = 'Your new artist has been created in the database!';
+            if ($this->genre->save()) {
+                $success = 'Your new genre has been created in the database!';
                 //Override to see a new empty form
-                $this->artist = new Artist();
+                $this->genre = new Genre();
             } else {
-                $this->errors[] = 'Whoops, something went wrong creating the artist';
+                $this->errors[] = 'Whoops, something went wrong creating the genre';
             }
         }
 
         //Return formatted data
         $this->renderTemplate([
-            'pageTitle' => 'Create artist',
-            'artist' => $this->artist,
+            'pageTitle' => 'Create genre',
+            'genre' => $this->genre,
             'success' => $success ?? false,
             'errors' => $this->errors
         ]);
@@ -66,31 +66,31 @@ class ArtistHandler extends BaseHandler
     {
         try {
             //Get the record from the db & execute POST logic
-            $this->artist = Artist::getById($_GET['id']);
+            $this->genre = Genre::getById($_GET['id']);
             $this->executePostHandler();
 
             //Database magic when no errors are found
             if (isset($this->formData) && empty($this->errors)) {
                 //Save the record to the db
-                if ($this->artist->save()) {
-                    $success = 'Your artist has been updated in the database!';
+                if ($this->genre->save()) {
+                    $success = 'Your genre has been updated in the database!';
                 } else {
-                    $this->errors[] = 'Whoops, something went wrong updating the artist';
+                    $this->errors[] = 'Whoops, something went wrong updating the genre';
                 }
             }
 
-            $pageTitle = 'Edit ' . $this->artist->name;
+            $pageTitle = 'Edit ' . $this->genre->name;
         } catch (\Exception $e) {
             $this->logger->error($e);
-            $this->artist = new Artist();
+            $this->genre = new Genre();
             $this->errors[] = 'Whoops: ' . $e->getMessage();
-            $pageTitle = 'Artist does\'t exist';
+            $pageTitle = 'Genre does\'t exist';
         }
 
         //Return formatted data
         $this->renderTemplate([
             'pageTitle' => $pageTitle,
-            'artist' => $this->artist,
+            'genre' => $this->genre,
             'success' => $success ?? false,
             'errors' => $this->errors
         ]);
@@ -103,20 +103,20 @@ class ArtistHandler extends BaseHandler
     {
         try {
             //Get the records from the db
-            $artist = Artist::getById($_GET['id']);
+            $genre = Genre::getById($_GET['id']);
 
             //Default page title
-            $pageTitle = $artist->name;
+            $pageTitle = $genre->name;
         } catch (\Exception $e) {
             //Something went wrong on this level
             $this->errors[] = $e->getMessage();
-            $pageTitle = 'Artist does\'t exist';
+            $pageTitle = 'Genre does\'t exist';
         }
 
         //Return formatted data
         $this->renderTemplate([
             'pageTitle' => $pageTitle,
-            'artist' => $artist ?? false,
+            'genre' => $genre ?? false,
             'errors' => $this->errors
         ]);
     }
@@ -125,28 +125,28 @@ class ArtistHandler extends BaseHandler
     {
         try {
             //Get the record from the db
-            $artist = Artist::getById($_GET['id']);
+            $genre = Genre::getById($_GET['id']);
 
             //Only execute delete when confirmed
             if (isset($_GET['continue'])) {
                 //Delete in the DB, and if successful remove image as well
-                if (Artist::delete((int)$_GET['id'])) {
+                if (Genre::delete((int)$_GET['id'])) {
                     //Redirect to homepage after deletion & exit script
-                    header('Location: ' . BASE_PATH . 'artists');
+                    header('Location: ' . BASE_PATH . 'genres');
                     exit;
                 }
             }
 
             //Return formatted data
             $this->renderTemplate([
-                'pageTitle' => 'Delete artist',
-                'artist' => $artist,
+                'pageTitle' => 'Delete genre',
+                'genre' => $genre,
                 'errors' => $this->errors
             ]);
         } catch (\Exception $e) {
             //There is no delete template, always redirect.
             $this->logger->error($e);
-            header('Location: ' . BASE_PATH . 'artists');
+            header('Location: ' . BASE_PATH . 'genres');
             exit;
         }
     }

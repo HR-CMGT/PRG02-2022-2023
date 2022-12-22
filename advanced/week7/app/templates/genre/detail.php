@@ -1,7 +1,7 @@
 <?php
 /**
  * @var array $errors
- * @var \MusicCollection\Databases\Objects\Artist $artist
+ * @var \MusicCollection\Databases\Objects\Genre $genre
  */
 ?>
 <?php if (!empty($errors)): ?>
@@ -14,13 +14,13 @@
     </section>
 <?php endif; ?>
 
-<?php if (isset($artist)): ?>
-    <h1 class="title mt-4"><?= $artist->name; ?></h1>
+<?php if (isset($genre)): ?>
+    <h1 class="title mt-4"><?= $genre->name; ?></h1>
     <section class="content">
         <ul>
             <li>Albums:
                 <ul>
-                    <?php foreach ($artist->albums() as $album): ?>
+                    <?php foreach ($genre->albums() as $album): ?>
                         <li><?= $album->name; ?></li>
                     <?php endforeach; ?>
                 </ul>
@@ -28,4 +28,4 @@
         </ul>
     </section>
 <?php endif; ?>
-<a class="button mt-4" href="<?= BASE_PATH; ?>artists">Go back to the list</a>
+<a class="button mt-4" href="<?= BASE_PATH; ?>genres">Go back to the list</a>
