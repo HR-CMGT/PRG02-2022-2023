@@ -1,0 +1,19 @@
+{
+    "name": "antwan/music_collection",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "antwan",
+            "email": "moora@hr.nl"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MusicCollection\\": "app/classes"
+        }
+    }
+}
