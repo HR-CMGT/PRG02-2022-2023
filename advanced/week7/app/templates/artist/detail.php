@@ -1,7 +1,7 @@
 <?php
 /**
  * @var array $errors
- * @var \MusicCollection\Databases\Objects\Artist $artist
+ * @var \MusicCollection\Databases\Objects\Artist|null $artist
  */
 ?>
 <?php if (!empty($errors)): ?>

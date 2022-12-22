@@ -23,73 +23,71 @@
     <p class="notification is-primary"><?= $success; ?></p>
 <?php } ?>
 
-<?php if (isset($album)): ?>
-    <section class="columns">
-        <form class="column is-6" action="" method="post" enctype="multipart/form-data">
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="artist">Artist</label>
-                </div>
-                <div class="field-body select is-fullwidth">
-                    <select name="artist-id" id="artist-id" title="Artist">
-                        <?php foreach ($artists as $artist): ?>
-                            <option value="<?= $artist->id; ?>" <?= $artist->id === $album->artist_id ? 'selected' : '' ?>><?= $artist->name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+<section class="columns">
+    <form class="column is-6" action="" method="post" enctype="multipart/form-data">
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="artist">Artist</label>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="name">Name</label>
-                </div>
-                <div class="field-body">
-                    <input class="input" id="name" type="text" name="name" value="<?= $album->name; ?>"/>
-                </div>
+            <div class="field-body select is-fullwidth">
+                <select name="artist-id" id="artist-id" title="Artist">
+                    <?php foreach ($artists as $artist): ?>
+                        <option value="<?= $artist->id; ?>" <?= $artist->id === $album->artist_id ? 'selected' : '' ?>><?= $artist->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="genre-ids">Genre(s)</label>
-                </div>
-                <div class="field-body select is-multiple is-fullwidth">
-                    <select multiple size="3" name="genre-ids[]" id="genre-ids" title="Genres">
-                        <?php foreach ($genres as $genre): ?>
-                            <option value="<?= $genre->id; ?>" <?= in_array($genre->id, $genreIds) ? 'selected' : '' ?>><?= $genre->name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="name">Name</label>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="year">Year</label>
-                </div>
-                <div class="field-body">
-                    <input class="input" id="year" type="text" name="year" value="<?= $album->year; ?>"/>
-                </div>
+            <div class="field-body">
+                <input class="input" id="name" type="text" name="name" value="<?= $album->name; ?>"/>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="tracks">Tracks</label>
-                </div>
-                <div class="field-body">
-                    <input class="input" id="tracks" type="number" name="tracks" value="<?= $album->tracks; ?>"/>
-                </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="genre-ids">Genre(s)</label>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label" for="image">Image</label>
-                </div>
-                <div class="field-body">
-                    <input class="input" id="image" type="file" name="image"/>
-                </div>
+            <div class="field-body select is-multiple is-fullwidth">
+                <select multiple size="3" name="genre-ids[]" id="genre-ids" title="Genres">
+                    <?php foreach ($genres as $genre): ?>
+                        <option value="<?= $genre->id; ?>" <?= in_array($genre->id, $genreIds) ? 'selected' : '' ?>><?= $genre->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
-            <div class="field is-horizontal">
-                <div class="field-label is-normal"></div>
-                <div class="field-body">
-                    <button class="button is-primary is-fullwidth" type="submit" name="submit">Save</button>
-                </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="year">Year</label>
             </div>
-        </form>
-    </section>
-<?php endif; ?>
+            <div class="field-body">
+                <input class="input" id="year" type="text" name="year" value="<?= $album->year; ?>"/>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="tracks">Tracks</label>
+            </div>
+            <div class="field-body">
+                <input class="input" id="tracks" type="number" name="tracks" value="<?= $album->tracks; ?>"/>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+                <label class="label" for="image">Image</label>
+            </div>
+            <div class="field-body">
+                <input class="input" id="image" type="file" name="image"/>
+            </div>
+        </div>
+        <div class="field is-horizontal">
+            <div class="field-label is-normal"></div>
+            <div class="field-body">
+                <button class="button is-primary is-fullwidth" type="submit" name="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</section>
 <a class="button mt-4" href="<?= BASE_PATH; ?>albums">&laquo; Go back to the list</a>
 <a class="button mt-4 is-danger" href="<?= BASE_PATH; ?>logout">Logout</a>

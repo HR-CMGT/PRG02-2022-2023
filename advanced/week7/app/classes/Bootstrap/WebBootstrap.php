@@ -28,12 +28,11 @@ class WebBootstrap implements BootstrapInterface
      */
     public function setup(): void
     {
-        //Get the url from the nginx config & check existence (if not: 404!)
+        //Get the url from the htaccess parameter & check existence (if not: 404!)
         $route = (!isset($_GET['_url']) || $_GET['_url'] == '' ? '' : $_GET['_url']);
-        require_once INCLUDES_PATH . 'config/routes.php';
+        $routes = getRoutes();
 
         //Check existence of route & initiate correct Handler & actions based on route
-        /** @var array $routes */
         if (isset($routes[$route])) {
             list($class, $action) = explode('@', $routes[$route]);
             $this->className = '\\MusicCollection\\Handlers\\' . $class;

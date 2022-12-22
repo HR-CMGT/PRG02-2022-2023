@@ -1,7 +1,7 @@
 <?php
 /**
  * @var array $errors
- * @var \MusicCollection\Databases\Objects\Genre $genre
+ * @var \MusicCollection\Databases\Objects\Genre|null $genre
  */
 ?>
 <?php if (!empty($errors)): ?>

@@ -2,7 +2,7 @@
 /**
  * @var array $errors
  * @var string|boolean $success
- * @var \MusicCollection\Databases\Objects\Genre $genre
+ * @var \MusicCollection\Databases\Objects\Genre|null $genre
  */
 ?>
 <?php if (!empty($errors)): ?>

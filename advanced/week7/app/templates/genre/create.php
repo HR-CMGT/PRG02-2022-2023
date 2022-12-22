@@ -20,7 +20,6 @@
     <p class="notification is-primary"><?= $success; ?></p>
 <?php } ?>
 
-<?php if (isset($genre)): ?>
 <section class="columns">
     <form class="column is-6" action="" method="post" enctype="multipart/form-data">
         <div class="field is-horizontal">
@@ -39,6 +38,5 @@
         </div>
     </form>
 </section>
-<?php endif; ?>
 <a class="button mt-4" href="<?= BASE_PATH; ?>genres">&laquo; Go back to the list</a>
 <a class="button mt-4 is-danger" href="<?= BASE_PATH; ?>logout">Logout</a>

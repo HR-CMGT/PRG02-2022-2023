@@ -28,21 +28,12 @@ class GenreHandler extends BaseHandler
 
     protected function create(): void
     {
-        //If not logged in, redirect to login
-        if (!$this->session->keyExists('user')) {
-            header('Location: ' . BASE_PATH . 'user/login?location=genres/create');
-            exit;
-        }
-
         //Set default empty genre & execute POST logic
         $this->genre = new Genre();
         $this->executePostHandler();
 
         //Database magic when no errors are found
         if (isset($this->formData) && empty($this->errors)) {
-            //Set user id in Genre
-            $this->genre->user_id = $this->session->get('user')->id;
-
             //Save the record to the db
             if ($this->genre->save()) {
                 $success = 'Your new genre has been created in the database!';

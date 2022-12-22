@@ -14,9 +14,6 @@
     </section>
 <?php endif; ?>
 
-<?php if (isset($artist)): ?>
-    <h1 class="title mt-4">Are you sure you want to delete artist <em><?= $artist->name; ?></em>?</h1>
-    <a class="button is-danger mt-4" href="<?= BASE_PATH; ?>artists/delete?id=<?= $artist->id; ?>&continue">Yes, delete!</a>
-    <a class="button mt-4" href="<?= BASE_PATH; ?>artists">Go back to the list</a>
-<?php endif; ?>
-
+<h1 class="title mt-4">Are you sure you want to delete artist <em><?= $artist->name; ?></em>?</h1>
+<a class="button is-danger mt-4" href="<?= BASE_PATH; ?>artists/delete?id=<?= $artist->id; ?>&continue">Yes, delete!</a>
+<a class="button mt-4" href="<?= BASE_PATH; ?>artists">Go back to the list</a>

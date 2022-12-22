@@ -7,6 +7,8 @@ use MusicCollection\Utils\Logger;
 /**
  * Class BaseObject
  * @package MusicCollection\Databases
+ * @property null|int $id
+ *
  * @example To extend this class use the following format with nullable ID and empty default values
  *  class MyObject extends BaseObject
  *  {

@@ -1,22 +1,28 @@
 {
-    "name": "antwan/music_collection",
-    "license": "MIT",
-    "minimum-stability": "stable",
-    "authors": [
-        {
-            "name": "antwan",
-            "email": "moora@hr.nl"
-        }
-    ],
-    "scripts": {
-        "test": "export XDEBUG_MODE=coverage && phpunit --testdox"
-    },
-    "require": {
-        "phpunit/phpunit": "^9.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "MusicCollection\\": "app/classes"
-        }
+  "name": "antwan/music_collection",
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "antwan",
+      "email": "moora@hr.nl"
     }
+  ],
+  "scripts": {
+    "test": "export XDEBUG_MODE=coverage && phpunit --testdox",
+    "phpstan": "phpstan analyse -c phpstan.neon"
+  },
+  "autoload": {
+    "psr-4": {
+      "MusicCollection\\": "app/classes"
+    },
+    "files": [
+      "app/config/settings.php",
+      "app/config/routes.php"
+    ]
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.9",
+    "phpunit/phpunit": "^9.5"
+  }
 }

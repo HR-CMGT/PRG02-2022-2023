@@ -2,7 +2,7 @@
 /**
  * @var string[] $errors
  * @var string|bool $success
- * @var \MusicCollection\Databases\Objects\Album|bool $album
+ * @var \MusicCollection\Databases\Objects\Album|null $album
  * @var \MusicCollection\Databases\Objects\Artist[] $artists
  * @var \MusicCollection\Databases\Objects\Genre[] $genres
  * @var int[] $genreIds

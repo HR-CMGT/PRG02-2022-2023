@@ -14,9 +14,6 @@
     </section>
 <?php endif; ?>
 
-<?php if (isset($album)): ?>
-    <h1 class="title mt-4">Are you sure you want to delete album <em><?= $album->name; ?></em> from <em><?= $album->artists_name; ?></em>?</h1>
-    <a class="button is-danger mt-4" href="<?= BASE_PATH; ?>albums/delete?id=<?= $album->id; ?>&continue">Yes, delete!</a>
-    <a class="button mt-4" href="<?= BASE_PATH; ?>albums">Go back to the list</a>
-<?php endif; ?>
-
+<h1 class="title mt-4">Are you sure you want to delete album <em><?= $album->name; ?></em> from <em><?= $album->artists_name; ?></em>?</h1>
+<a class="button is-danger mt-4" href="<?= BASE_PATH; ?>albums/delete?id=<?= $album->id; ?>&continue">Yes, delete!</a>
+<a class="button mt-4" href="<?= BASE_PATH; ?>albums">Go back to the list</a>
