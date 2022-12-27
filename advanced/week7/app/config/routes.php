@@ -1,4 +1,5 @@
 <?php
+
 function getRoutes(): array
 {
     return [

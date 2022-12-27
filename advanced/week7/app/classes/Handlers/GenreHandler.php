@@ -120,7 +120,7 @@ class GenreHandler extends BaseHandler
 
             //Only execute delete when confirmed
             if (isset($_GET['continue'])) {
-                //Delete in the DB, and if successful remove image as well
+                //Delete in the DB
                 if (Genre::delete((int)$_GET['id'])) {
                     //Redirect to homepage after deletion & exit script
                     header('Location: ' . BASE_PATH . 'genres');

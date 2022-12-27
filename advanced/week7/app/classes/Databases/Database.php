@@ -19,7 +19,8 @@ class Database
      *
      * @throws \Exception
      */
-    private function __construct() {
+    private function __construct()
+    {
         $this->connect();
     }
 
