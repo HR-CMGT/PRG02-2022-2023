@@ -51,7 +51,7 @@ class Image
         }
 
         //You should name it uniquely., DO NOT USE $uploadFile['name'] WITHOUT ANY VALIDATION !!
-        $fileName = uniqid($uploadFile['tmp_name']) . '.' . $ext;
+        $fileName = sha1_file($uploadFile['tmp_name']) . uniqid('', true) . '.' . $ext;
         if (!move_uploaded_file($uploadFile['tmp_name'], sprintf('./images/%s', $fileName))) {
             throw new \RuntimeException('Failed to move uploaded file.');
         }
