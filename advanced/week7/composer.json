@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "export XDEBUG_MODE=coverage && phpunit --testdox",
-    "phpstan": "phpstan analyse -c phpstan.neon --debug"
+    "phpstan": "phpstan analyse -c phpstan.neon"
   },
   "autoload": {
     "psr-4": {
