@@ -50,7 +50,7 @@ if(isset($_POST['submit'])) {
                         <div class="field-body">
                             <div class="field">
                                 <div class="control has-icons-left">
-                                    <input class="input" id="name" type="text" name="name" value="<?= $name ?? '' ?>" />
+                                    <input class="input" id="name" type="text" name="name" value="<?= isset($name) ? $name : '' ?>" />
                                     <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                 </div>
                                 <p class="help is-danger">
@@ -68,7 +68,7 @@ if(isset($_POST['submit'])) {
                         <div class="field-body">
                             <div class="field">
                                 <div class="control has-icons-left">
-                                    <input class="input" id="email" type="text" name="email" value="<?= $email ?? '' ?>" />
+                                    <input class="input" id="email" type="text" name="email" value="<?= isset($email) ? $email : '' ?>" />
                                     <span class="icon is-small is-left"><i class="fas fa-envelope"></i></span>
                                 </div>
                                 <p class="help is-danger">
