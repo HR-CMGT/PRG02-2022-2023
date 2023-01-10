@@ -10,7 +10,7 @@ if(!isset($_GET['id']) || $_GET['id'] == '') {
 }
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM users WHERE id=$id";
+$sql = "SELECT * FROM users WHERE id='$id'";
 $result = mysqli_query($db, $sql);
 $user = mysqli_fetch_assoc($result);
 ?>
