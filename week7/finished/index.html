@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Lesopdrachten week 7</title>
+</head>
+<body>
+<section class="section">
+    <div class="content">
+        <h2 class="title is-2">
+            Overzicht van de lesopdrachten van week 7
+        </h2>
+
+        <!--Opdracht 1-->
+        <h3 class="title is-4">
+            Opdracht 1: Cross Site Scripting (XSS, oftewel Javascript injectie)
+        </h3>
+        <p class="mb-4">
+            Voer de volgende code in als naam op de pagina <a href="XSS-form.php" target="_blank">XSS-form.php</a>
+        </p>
+        <blockquote>
+            <code>
+                &lt;script&gt;for (let i = 0 ; i < Date.now(); i++) alert("Sir Click Alot")&lt;/script&gt;
+            </code>
+        </blockquote>
+        <p class="mb-4">
+            Open <a href="XSS-form.php" target="_blank">XSS-form.php</a>. Op <code>regel 39</code> wordt de naam getoond.
+            Door hier gebruik te maken van de functie <code>htmlentities()</code>, zorg je ervoor dat javascript (die
+            eventueel in de naam zit) niet uitgevoerd wordt.
+        </p>
+        <blockquote>
+            Pas de <a href="XSS-form.php" target="_blank">XSS-form.php</a> pagina aan zodat deze beveiligd is tegen XSS
+        </blockquote>
+
+
+        <!--Opdracht 2-->
+        <h3 class="title is-4">
+            Opdracht 2: SQL Injection
+        </h3>
+        <p class="mb-4">
+            Voor deze opdracht maken we gebruik van de <code>users</code> tabel uit de vorige les. Zorg ervoor dat er
+            minimaal 2 users in de database staan. Als dat niet zo is, kan je ze via de <a
+                href="../../week6/finished/register.php">register.php</a> pagina <a href="../../week6/exercises">uit de vorige les</a> toevoegen.
+        </p>
+        <blockquote>
+            Bezoek de pagina <a href="http://localhost/PRG02-2022-2023/week7/finished/SQL-injection.php?id=2">http://localhost/PRG02-2022-2023/week7/finished/SQL-injection.php?id=2</a>.
+            In de link zie je staan <code>id=2</code>. Vervang de 2 door het id van de users die als laatste is toegevoegd
+            aan de database.
+        </blockquote>
+        <p class="mb-4">
+            Je ziet nu het profiel van de gebruiker met dat id. Ook kun je op de pagina de query zien die bij deze pagina
+            hoort. Aan het einde van de query zie je dat het nummer van het id geplaatst wordt door middel van een variabele.
+            We gaan nu de query beïnvloeden door achter het '=' teken een andere invoer te doen.
+        </p>
+        <blockquote>
+            Zet achter het '=' teken een willekeurig id (bijv. 4) en daarna de tekst <code> OR 1 = 1</code>.
+            Je krijgt dan de volgende link:
+            <a href="http://localhost/PRG02-2022-2023/week7/finished/SQL-injection.php?id=4%27%20OR%20%271%27=%271">http://localhost/PRG02-2022-2023/week7/finished/SQL-injection.php?id=4' OR '1'='1</a>.
+        </blockquote>
+        <p class="mb-4">
+            Je zult nu zien dat je altijd de eerste user uit de database te zien krijgt. Dit komt omdat we de SQL query
+            beïnvloedt hebben. De query <code>SELECT * FROM users WHERE id=2</code> haalt een specifieke user op uit de
+            database. Maar door de toevoeging <code>OR 1 = 1</code>, wordt de query <code>SELECT * FROM users WHERE id=2 OR 1 = 1</code>.
+            Er staat nu: "Selecteer een gebruiker als zijn id = 2 of als 1 = 1" en dat laatste is altijd waar. Hierdoor
+            worden alle users geselecteerd. De code <code>$user = mysqli_fetch_assoc($result);</code> kiest vervolgens
+            altijd de eerste gebruiker.
+        </p>
+        <blockquote>
+            Beveilig nu het id (dat binnenkomt via de GET-methode) tegen SQL Injection door gebruik te maken van de
+            functie <code>mysqli_escape_string()</code>
+        </blockquote>
+
+        <!--Opdracht 3-->
+        <h3 class="title is-4">
+            Opdracht 3: ERD veel-op-veel
+        </h3>
+        <p class="mb-4">
+            Gegeven is het volgende:
+            <br>
+            <span class="is-italic">
+                De case betreft een factureringssysteem. Elke factuur bevat producten. Ook staat er van elk product
+                aangegeven hoeveel keer deze besteld is en de prijs per product.
+
+                Bovenaan de factuur staat de naam en het banknummer van de klant en onderaan het totaalbedrag van alle
+                bestelde producten bij elkaar.
+            </span>
+        </p>
+        <blockquote>
+            Maak het ERD voor bovenstaande case (bijv met <a href="https://drawsql.app/" target="_blank">DrawSQL</a>).
+            Let goed op dat de informatie in de juiste tabel wordt opgeslagen
+            en op de notatie van de relaties.
+        </blockquote>
+        <img src="erd-order-system.png" alt=""/>
+    </div>
+</section>
+</body>
+</html>
